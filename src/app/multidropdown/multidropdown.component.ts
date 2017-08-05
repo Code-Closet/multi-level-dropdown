@@ -25,6 +25,7 @@ export class MultidropdownComponent implements OnInit {
   }
 
   onButtonClick(event : any){
+    this.openedNodes = [];
     this.dropdown_state = !this.dropdown_state;
     }
 

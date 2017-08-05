@@ -20,6 +20,7 @@ export class SingleleveldropdownComponent implements OnInit {
   }
 
   onButtonClick(event : any){
+    this.clickedNode = "";
     this.dropdown_state = !this.dropdown_state;
     }
 
