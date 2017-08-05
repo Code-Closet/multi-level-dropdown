@@ -1,0 +1,11 @@
+<div class="dropdown" [class.open-dropdown-menu] = "dropdown_state">
+  <button class="btn btn-default dropdown-toggle"  
+          (click) = "onButtonClick($event)" type="button" data-toggle="dropdown">{{selectedObject}}
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">          
+    <li *ngFor = "let element of dropdownData" 
+      (click) = "onClickElement($event, element)">
+      <a class="dropdown-name" tabindex="-1" href="#">{{element}}</a>
+    </li>
+  </ul>
+</div>

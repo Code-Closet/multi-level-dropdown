@@ -1,0 +1,7 @@
+.open-dropdown-menu {
+    display: inline-block;
+}
+
+.open-dropdown-menu > .dropdown-menu {
+    display: block;
+}

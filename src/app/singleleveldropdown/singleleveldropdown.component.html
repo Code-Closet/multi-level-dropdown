@@ -1,0 +1,22 @@
+<div class="dropdown" [class.open-dropdown-menu] = "dropdown_state">
+  <button class="btn btn-default dropdown-toggle"  
+          (click) = "onButtonClick($event)" type="button" data-toggle="dropdown">{{selectedObject}}
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">          
+       <li *ngFor = "let dropdown of dropdownData" class="dropdown-submenu"  
+          [class.open-dropdown-menu] = "clickedNode == dropdown.name" 
+          (click) = "onClickParent($event, dropdown)">
+         <a class="left dropdown-name" tabindex="-1" href="#">{{dropdown.name}}</a>
+          <span *ngIf="dropdown.values.length > 0; then childElement"></span>
+          <ng-template #childElement>
+            <span class="left caret-align caret"></span>
+            <ul class="dropdown-menu">
+              <li *ngFor = "let childData of dropdown.values" 
+                (click) = "onClickElement($event, childData)">
+                <a class="dropdown-name" tabindex="-1" href="#">{{childData}}</a>
+              </li>
+            </ul>
+          </ng-template>  
+        </li>
+  </ul>
+</div>

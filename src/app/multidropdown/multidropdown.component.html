@@ -1,0 +1,20 @@
+<div class="dropdown" [class.open-dropdown-menu] = "dropdown_state">
+  <button class="btn btn-default dropdown-toggle"  
+          (click) = "onButtonClick($event)" type="button" data-toggle="dropdown">{{selectedDropdownObject.name}}
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: dropdownData }"></ng-container>
+  <ng-template #recursiveList let-dropdownData>
+    <li id="data.address" class="dropdown-submenu" [class.open-dropdown-menu] = "openedNodes.indexOf(data.address) >= 0 ? true : false" 
+        *ngFor="let data of dropdownData" (click) = "onChildClick($event, data.address)">
+      <a class="dropdown-name" tabindex="-1" href="#">{{data.name}}
+        <span *ngIf="data.values.length > 0; then childElement"></span>
+        <ng-template #childElement><span class="caret"></span></ng-template>        
+      </a>
+      <ul class="dropdown-menu child-dropdown" *ngIf="data.values.length > 0">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: data.values }"></ng-container>
+      </ul>
+    </li>
+  </ng-template>
+</ul>
+</div>
